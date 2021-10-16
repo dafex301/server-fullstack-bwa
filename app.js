@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 // import mongoose
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/staycation-server');
+mongoose.connect('mongodb://localhost:27017/server-bwamern');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
