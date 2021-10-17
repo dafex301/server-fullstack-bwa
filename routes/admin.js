@@ -3,9 +3,11 @@ const adminController = require('../controllers/adminController');
 
 router.get('/dashboard', adminController.viewDashboard);
 
+// Category
 router.get('/category', adminController.viewCategory);
 router.post('/category', adminController.addCategory);
 router.put('/category', adminController.updateCategory);
+router.delete('/category/:id', adminController.deleteCategory);
 
 router.get('/bank', adminController.viewBank);
 

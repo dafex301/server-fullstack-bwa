@@ -22,26 +22,33 @@
 						<td><%= i + 1 %></td>
 						<td><%= category[i].name %></td>
 						<td>
-							<!-- UPDATE BUTTON -->
-							<a
-								href="javascript:void()"
-								type="button"
-								class="
-									btn btn-warning btn-circle btn-sm
-									button-update
-								"
-								data-id="<%= category[i].id %>"
-								data-name="<%= category[i].name %>"
+							<form
+								action="/admin/category/<%= category[i].id %>?_method=DELETE"
+								method="POST"
 							>
-								<i class="fas fa-edit"></i
-							></a>
-							<!-- DELETE BUTTON -->
-							<a
-								href="javascript:void()"
-								type="button"
-								class="btn btn-danger btn-circle btn-sm"
-								><i class="fas fa-trash"></i
-							></a>
+								<!-- UPDATE BUTTON -->
+								<a
+									href="javascript:void()"
+									type="button"
+									class="
+										btn btn-warning btn-circle btn-sm
+										button-update
+									"
+									data-id="<%= category[i].id %>"
+									data-name="<%= category[i].name %>"
+								>
+									<i class="fas fa-edit"></i
+								></a>
+								<!-- DELETE BUTTON -->
+
+								<button
+									type="submit"
+									type="button"
+									class="btn btn-danger btn-circle btn-sm"
+								>
+									<i class="fas fa-trash"></i>
+								</button>
+							</form>
 						</td>
 					</tr>
 					<% } %>
