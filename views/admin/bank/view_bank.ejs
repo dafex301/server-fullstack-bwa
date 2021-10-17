@@ -113,10 +113,9 @@
         <script>
             $('#dataTable').on('click', '.button-update', function() {
                 let id = $(this).data('id');
-                let nameBank = $(this).data('nameBank');
-                let accountNumber = $(this).data('accountNumber');
-                let accountHolder = $(this).data('accountHolder');
-                console.log(id, nameBank, accountNumber, accountHolder);
+                let nameBank = $(this).data('namebank');
+                let accountNumber = $(this).data('accountnumber');
+                let accountHolder = $(this).data('accountholder');
                 $('#update-bank').modal('show');
                 $('.id').val(id);
                 $('.nameBank').val(nameBank);
