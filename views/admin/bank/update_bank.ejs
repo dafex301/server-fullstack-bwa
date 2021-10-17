@@ -1,17 +1,7 @@
-<!-- Button trigger modal -->
-<button
-	type="button"
-	class="btn btn-primary"
-	data-toggle="modal"
-	data-target="#add-bank"
->
-	Add
-</button>
-
 <!-- Modal -->
 <div
 	class="modal fade"
-	id="add-bank"
+	id="update-bank"
 	tabindex="-1"
 	role="dialog"
 	aria-labelledby="exampleModalLabel"
@@ -20,7 +10,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add bank</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Update bank</h5>
 				<button
 					type="button"
 					class="close"
@@ -32,12 +22,12 @@
 			</div>
 			<div class="modal-body">
 				<!-- Form -->
-				<form action='/admin/bank' method='POST' enctype="multipart/form-data">
+				<form action='/admin/bank?_method=PUT' method='POST' enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="name">Bank Name</label>
 						<input
 							type="text"
-							class="form-control"
+							class="form-control nameBank"
 							name="nameBank"
 							placeholder="Enter bank name"
                             required
@@ -47,7 +37,7 @@
 						<label for="name">Account Number</label>
 						<input
 							type="text"
-							class="form-control"
+							class="form-control accountNumber"
 							name="accountNumber"
 							placeholder="Enter account number"
                             required
@@ -57,7 +47,7 @@
 						<label for="name">Account Holder</label>
 						<input
 							type="text"
-							class="form-control"
+							class="form-control accountHolder"
 							name="accountHolder"
 							placeholder="Enter account holder"
                             required
@@ -69,8 +59,8 @@
 							type="file"
 							class="form-control"
 							name="image"
-                            required
 						/>
+                        <span>Pilih gambar untuk update image</span>
 					</div>
                     <div class="modal-footer">
                         <button
