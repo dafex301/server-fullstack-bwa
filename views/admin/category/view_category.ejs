@@ -30,7 +30,6 @@
 						</div>
                         <!-- Including Table -->
                         
-                    
                     <%- include('table_category.ejs') %>
 					</div>
 					<!-- /.container-fluid -->
@@ -91,8 +90,21 @@
 				</div>
 			</div>
 		</div>
-        <!-- JavaScript Script -->
+        <!-- Update Modal -->
+        <%- include('update_category.ejs') %> 
         
+        <!-- JavaScript Script -->
         <%- include('../../partials/js.ejs') %> 
+        <script>
+            $('#dataTable').on('click', '.button-update', function() {
+                let id = $(this).data('id');
+                let name = $(this).data('name');
+                // console.log(id, name)
+                $('#update-category').modal('show');
+                $('.id').val(id);
+                $('.name').val(name);
+            })
+        </script>
+
 	</body>
 </html>

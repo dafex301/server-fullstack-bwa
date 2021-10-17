@@ -1,17 +1,7 @@
-<!-- Button trigger modal -->
-<button
-	type="button"
-	class="btn btn-primary"
-	data-toggle="modal"
-	data-target="#add-category"
->
-	Add
-</button>
-
 <!-- Modal -->
 <div
 	class="modal fade"
-	id="add-category"
+	id="update-category"
 	tabindex="-1"
 	role="dialog"
 	aria-labelledby="exampleModalLabel"
@@ -20,7 +10,7 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Add category</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Update category</h5>
 				<button
 					type="button"
 					class="close"
@@ -37,13 +27,14 @@
 						<label for="name">Category Name</label>
 						<input
 							type="text"
-							class="form-control"
-							id="name"
+							class="form-control name"
+							
 							name="name"
 							placeholder="Enter name"
 						/>
 					</div>
                     <div class="modal-footer">
+                        <input type="hidden" class='id'>
                         <button
                             type="button"
                             class="btn btn-secondary"
