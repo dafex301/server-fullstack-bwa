@@ -4,14 +4,17 @@ const { upload } = require('../middlewares/multer');
 
 router.get('/dashboard', adminController.viewDashboard);
 
-// Category
+// Endpoint Category
 router.get('/category', adminController.viewCategory);
 router.post('/category', adminController.addCategory);
 router.put('/category', adminController.updateCategory);
 router.delete('/category/:id', adminController.deleteCategory);
 
+// Endpoint Bank
 router.get('/bank', adminController.viewBank);
 router.post('/bank', upload, adminController.addBank);
+router.put('/bank', upload, adminController.editBank);
+router.delete('/bank/:id', adminController.deleteBank);
 
 router.get('/item', adminController.viewItem);
 
