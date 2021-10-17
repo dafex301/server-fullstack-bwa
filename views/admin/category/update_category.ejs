@@ -22,7 +22,7 @@
 			</div>
 			<div class="modal-body">
 				<!-- Form -->
-				<form action='/admin/category/' method='POST'>
+				<form action='/admin/category/?_method=PUT' method='POST'>
 					<div class="form-group">
 						<label for="name">Category Name</label>
 						<input
@@ -34,7 +34,7 @@
 						/>
 					</div>
                     <div class="modal-footer">
-                        <input type="hidden" class='id'>
+                        <input type="hidden" name='id' class='id'>
                         <button
                             type="button"
                             class="btn btn-secondary"
@@ -43,7 +43,7 @@
                             Close
                         </button>
                         <button type="submit" class="btn btn-primary">
-                            Add
+                            Update
                         </button>
 				</form>
 			</div>
