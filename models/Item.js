@@ -8,6 +8,7 @@ const itemSchema = new mongoose.Schema({
 	city: { type: String, required: true },
 	isPopular: { type: Boolean },
 	description: { type: String, required: true },
+	categoryId: { type: ObjectId, ref: 'Category' },
 	imageId: { type: ObjectId, required: true, ref: 'Image' },
 	featureId: { type: ObjectId, required: true, ref: 'Feature' },
 	activityId: { type: ObjectId, required: true, ref: 'Activity' },
