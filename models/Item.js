@@ -6,7 +6,7 @@ const itemSchema = new mongoose.Schema({
 	price: { type: Number, required: true },
 	country: { type: String, required: true, default: 'Indonesia' },
 	city: { type: String, required: true },
-	isPopular: { type: Boolean },
+	isPopular: { type: Boolean, default: false },
 	description: { type: String, required: true },
 	categoryId: { type: ObjectId, ref: 'Category' },
 	imageId: { type: ObjectId, required: true, ref: 'Image' },

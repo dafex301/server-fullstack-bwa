@@ -5,7 +5,7 @@
             type="text"
             class="form-control"
             name="title"
-            placeholder="Enter item title"
+            placeholder="Enter title"
             required
         />
     </div>
@@ -15,7 +15,7 @@
             type="text"
             class="form-control"
             name="price"
-            placeholder="Enter item price"
+            placeholder="Enter price"
             required
         />
     </div>
@@ -25,9 +25,16 @@
             type="text"
             class="form-control"
             name="city"
-            placeholder="Enter item city"
+            placeholder="Enter city"
             required
         />
+    </div>
+    <div class="form-group">
+        <label for="name">Category</label>
+        <select name="categoryId" class='form-control'>
+            <option value="">Category</option>
+            <option value="">Ambil dari database</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="name">Image</label>
@@ -40,13 +47,8 @@
     </div>
     <div class="form-group">
         <label for="name">Description</label>
-        <input
-            type="text"
-            class="form-control"
-            name="description"
-            placeholder="Enter item description"
-            required
-        />
+        <textarea name="about" class="form-control"></textarea>
+
     </div>
     <div class="modal-footer">
         <button
