@@ -1,5 +1,7 @@
 const Category = require('../models/Category');
 const Bank = require('../models/Bank');
+const Item = require('../models/Item');
+const Image = require('../models/Image');
 const fs = require('fs-extra');
 const path = require('path');
 
@@ -151,8 +153,58 @@ module.exports = {
 		}
 	},
 	// Item
-	viewItem: (req, res) => {
-		res.render('admin/item/view_item', { title: 'Staycation | Item' });
+	viewItem: async (req, res) => {
+		try {
+			const category = await Category.find();
+			const alertMessage = req.flash('alertMessage');
+			const alertStatus = req.flash('alertStatus');
+			const alert = { message: alertMessage, status: alertStatus };
+			res.render('admin/item/view_item', {
+				title: 'Staycation | Item',
+				category,
+				alert,
+			});
+		} catch (error) {
+			req.flash('alertMessage', `${error.message}`);
+			req.flash('alertStatus', 'danger');
+			res.redirect('/admin/bank');
+		}
+	},
+	addItem: async (req, res) => {
+		try {
+			if (req.files.length > 0) {
+				const { title, price, city, categoryId, about } = req.body;
+				const category = await Category.findOne({ _id: categoryId });
+				const newItem = {
+					title,
+					categoryId: category._id,
+					price,
+					city,
+					description: about,
+				};
+				const item = await Item.create(newItem);
+
+				// Category
+				category.itemId.push({ _id: item._id });
+				await category.save();
+
+				// Image
+				for (let i = 0; i < req.files.length; i++) {
+					const imageSave = await Image.create({
+						imageUrl: `images/${req.files.filename}`,
+					});
+					item.imageId.push({ _id: imageSave._id });
+					await item.save();
+				}
+				req.flash('alertMessage', 'Success delete bank');
+				req.flash('alertStatus', 'success');
+				res.redirect('/admin/item');
+			}
+		} catch (error) {
+			req.flash('alertMessage', `${error.message}`);
+			req.flash('alertStatus', 'danger');
+			res.redirect('/admin/item');
+		}
 	},
 
 	// Booking

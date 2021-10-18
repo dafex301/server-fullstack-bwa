@@ -1,4 +1,4 @@
-<form action='/admin/bank' method='POST' enctype="multipart/form-data">
+<form action='/admin/item' method='POST' enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Title</label>
         <input
@@ -33,7 +33,11 @@
         <label for="name">Category</label>
         <select name="categoryId" class='form-control'>
             <option value="">Category</option>
-            <option value="">Ambil dari database</option>
+            <% for (let i = 0; i < category.length; i++) { %>
+                <option value="<%= category[i].id %>">
+                    <%= category[i].name %>
+                </option>
+            <% } %>
         </select>
     </div>
     <div class="form-group">
@@ -43,6 +47,7 @@
             class="form-control"
             name="image"
             required
+            multiple
         />
     </div>
     <div class="form-group">

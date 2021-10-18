@@ -9,9 +9,9 @@ const itemSchema = new mongoose.Schema({
 	isPopular: { type: Boolean, default: false },
 	description: { type: String, required: true },
 	categoryId: { type: ObjectId, ref: 'Category' },
-	imageId: { type: ObjectId, required: true, ref: 'Image' },
-	featureId: { type: ObjectId, required: true, ref: 'Feature' },
-	activityId: { type: ObjectId, required: true, ref: 'Activity' },
+	imageId: { type: ObjectId, ref: 'Image' },
+	featureId: { type: ObjectId, ref: 'Feature' },
+	activityId: { type: ObjectId, ref: 'Activity' },
 });
 
 module.exports = mongoose.model('Item', itemSchema);
