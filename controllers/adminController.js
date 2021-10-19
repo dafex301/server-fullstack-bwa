@@ -359,6 +359,27 @@ module.exports = {
 			res.redirect(`/admin/item/show-detail-item/${itemId}`);
 		}
 	},
+	editFeature: async (req, res) => {
+		const { id, name, qty, itemId } = req.body;
+		try {
+			const feature = await Feature.findOne({ _id: id });
+			if (req.file != undefined) {
+				await fs.unlink(path.join(`public/${feature.imageUrl}`));
+				feature.imageUrl = `images/${req.file.filename}`;
+			}
+			feature.name = name;
+			feature.qty = qty;
+			feature.itemId = itemId;
+			await feature.save();
+			req.flash('alertMessage', 'Success update feature');
+			req.flash('alertStatus', 'success');
+			res.redirect(`/admin/item/show-detail-item/${itemId}`);
+		} catch (error) {
+			req.flash('alertMessage', `${error.message}`);
+			req.flash('alertStatus', 'danger');
+			res.redirect(`/admin/item/show-detail-item/${itemId}`);
+		}
+	},
 
 	// Booking
 	viewBooking: (req, res) => {

@@ -64,7 +64,7 @@
 							<tr>
 								<td><%= i + 1 %></td>
 								<td><%= feature[i].name %></td>
-								<td>$<%= feature[i].qty %></td>
+								<td><%= feature[i].qty %></td>
 								<td>
 									<img
 										src="http://localhost:3000/<%= feature[i].imageUrl %>"
@@ -77,15 +77,19 @@
 										action="/admin/feature/<%= feature[i].id %>/delete?_method=DELETE"
 										method="POST"
 									>
-										<!-- UPDATE BUTTON -->
 										<a
-											href="/admin/feature/<%= feature[i].id %>"
+											href="javascript:void()"
+											type="button"
 											class="
 												btn
 												btn-warning
 												btn-circle
 												btn-sm
+												button-update
 											"
+											data-id="<%= feature[i].id %>"
+											data-name="<%= feature[i].name %>"
+											data-qty="<%= feature[i].qty %>"
 										>
 											<i class="fas fa-edit"></i
 										></a>

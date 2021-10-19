@@ -104,6 +104,7 @@
 				</div>
 			</div>
 		</div>
+        <%- include('modal_feature.ejs') %>
         <!-- JavaScript Script -->
         <%- include('../../../partials/js.ejs') %> 
         <script>
@@ -111,6 +112,16 @@
                 $('#dataTableActivity').DataTable();
             })
             CKEDITOR.replace( 'about' );
-        </script>
+        
+            $('#dataTable').on('click', '.button-update', function() {
+                let id = $(this).data('id');
+                let name = $(this).data('name');
+                let qty = $(this).data('qty');
+                $('#edit-modal').modal('show');
+                $('.id').val(id);
+                $('.name').val(name);
+                $('.qty').val(qty);
+            })
+            </script>
 	</body>
 </html>
