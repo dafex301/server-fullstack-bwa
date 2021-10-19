@@ -258,6 +258,41 @@ module.exports = {
 			res.redirect('/admin/item');
 		}
 	},
+	editItem: async (req, res) => {
+		try {
+			const { id } = req.params;
+			const { categoryId, price, title, city, about } = req.body;
+			const item = await Item.findOne({ _id: id })
+				.populate({ path: 'imageId', select: 'id imageUrl' })
+				.populate({ path: 'categoryId', select: 'id name' });
+
+			if (req.files.length > 0) {
+				for (let i = 0; i < item.imageId.length; i++) {
+					const imageUpdate = await Image.findOne({
+						_id: item.imageId[i]._id,
+					});
+					await fs.unlink(
+						path.join(`public/${imageUpdate.imageUrl}`)
+					);
+					imageUpdate.imageUrl = `images/${req.files[i].filename}`;
+					await imageUpdate.save();
+				}
+			}
+			item.title = title;
+			item.price = price;
+			item.city = city;
+			item.about = about;
+			item.categoryId = categoryId;
+			await item.save();
+			req.flash('alertMessage', 'Success update item');
+			req.flash('alertStatus', 'success');
+			res.redirect('/admin/item');
+		} catch (error) {
+			req.flash('alertMessage', `${error.message}`);
+			req.flash('alertStatus', 'danger');
+			res.redirect('/admin/item');
+		}
+	},
 
 	// Booking
 	viewBooking: (req, res) => {
