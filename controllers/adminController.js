@@ -293,6 +293,26 @@ module.exports = {
 			res.redirect('/admin/item');
 		}
 	},
+	deleteItem: async (req, res) => {
+		try {
+			const { id } = req.params;
+			const item = await Item.findOne({ _id: id }).populate('imageId');
+			for (let i = 0; i < item.imageId.length; i++) {
+				Image.findOne({ _id: item.imageId[i]._id }).then((img) => {
+					fs.unlink(path.join(`public/${img.imageUrl}`));
+					img.remove();
+				});
+			}
+			await item.remove();
+			req.flash('alertMessage', 'Success delete Item');
+			req.flash('alertStatus', 'success');
+			res.redirect('/admin/item');
+		} catch (error) {
+			req.flash('alertMessage', `${error.message}`);
+			req.flash('alertStatus', 'danger');
+			res.redirect('/admin/item');
+		}
+	},
 
 	// Booking
 	viewBooking: (req, res) => {
