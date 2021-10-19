@@ -104,15 +104,27 @@
 				</div>
 			</div>
 		</div>
+        <!-- TODO MASIH CUMA BISA SALAH SATU ACTIVITY FEATURE -->
+        <%- include('modal_activity.ejs') %>
         <%- include('modal_feature.ejs') %>
         <!-- JavaScript Script -->
         <%- include('../../../partials/js.ejs') %> 
         <script>
             $(document).ready(function() {
                 $('#dataTableActivity').DataTable();
+                $('#dataTable').DataTable();
             })
             CKEDITOR.replace( 'about' );
         
+            $('#dataTableActivity').on('click', '.button-update', function() {
+                let id = $(this).data('id');
+                let name = $(this).data('name');
+                let type = $(this).data('type');
+                $('#edit-modal').modal('show');
+                $('.id').val(id);
+                $('.name').val(name);
+                $('.type').val(type);
+            })
             $('#dataTable').on('click', '.button-update', function() {
                 let id = $(this).data('id');
                 let name = $(this).data('name');
