@@ -172,23 +172,19 @@ module.exports = {
 	},
 	addItem: async (req, res) => {
 		try {
-			const { title, price, city, categoryId, about } = req.body;
+			const { categoryId, title, price, city, about } = req.body;
 			if (req.files.length > 0) {
 				const category = await Category.findOne({ _id: categoryId });
 				const newItem = {
+					categoryId,
 					title,
-					categoryId: category._id,
+					description: about,
 					price,
 					city,
-					description: about,
 				};
 				const item = await Item.create(newItem);
-
-				// Category
 				category.itemId.push({ _id: item._id });
 				await category.save();
-
-				// Image
 				for (let i = 0; i < req.files.length; i++) {
 					const imageSave = await Image.create({
 						imageUrl: `images/${req.files[i].filename}`,
@@ -196,7 +192,7 @@ module.exports = {
 					item.imageId.push({ _id: imageSave._id });
 					await item.save();
 				}
-				req.flash('alertMessage', 'Success delete bank');
+				req.flash('alertMessage', 'Success Add Item');
 				req.flash('alertStatus', 'success');
 				res.redirect('/admin/item');
 			}
