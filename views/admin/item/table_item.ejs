@@ -18,6 +18,61 @@
 						<th>Action</th>
 					</tr>
 				</thead>
+				<tbody>
+					<% for (let i = 0; i < item.length; i++) { %>
+					<tr>
+						<td><%= i + 1 %></td>
+						<td><%= item[i].title %></td>
+						<td>$<%= item[i].price %></td>
+						<td><%= item[i].country %></td>
+						<td><%= item[i].city %></td>
+						<td>
+							<form
+								action="/admin/item/<%= item[i].id %>?_method=DELETE"
+								method="POST"
+							>
+								<!-- IMAGE BUTTON -->
+								<a
+									href="#"
+									class="btn btn-info btn-circle btn-sm"
+									><i class="fas fa-image"></i
+								></a>
+								<!-- UPDATE BUTTON -->
+								<a
+									href="javascript:void()"
+									type="button"
+									class="
+										btn btn-warning btn-circle btn-sm
+										button-update
+									"
+									data-id="<%= item[i].id %>"
+									data-title="<%= item[i].title %>"
+									data-price="<%= item[i].price %>"
+									data-country="<%= item[i].country %>"
+									data-city="<%= item[i].city %>"
+								>
+									<i class="fas fa-edit"></i
+								></a>
+								<!-- DELETE BUTTON -->
+
+								<button
+									type="submit"
+									type="button"
+									class="btn btn-danger btn-circle btn-sm"
+								>
+									<i class="fas fa-trash"></i>
+								</button>
+								<!-- IMAGE BUTTON -->
+								<a
+									href="#"
+									class="btn btn-success btn-circle btn-sm"
+									><i class="fas fa-plus"></i
+								></a>
+							</form>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
 			</table>
 		</div>
 	</div>
