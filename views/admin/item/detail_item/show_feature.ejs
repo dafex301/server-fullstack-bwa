@@ -55,10 +55,56 @@
 								<th>No</th>
 								<th>Name</th>
 								<th>QTY</th>
-								<th>Image URL</th>
+								<th>Image</th>
 								<th>Action</th>
 							</tr>
 						</thead>
+						<tbody>
+							<% for (let i = 0; i < feature.length; i++) { %>
+							<tr>
+								<td><%= i + 1 %></td>
+								<td><%= feature[i].name %></td>
+								<td>$<%= feature[i].qty %></td>
+								<td>
+									<img
+										src="http://localhost:3000/<%= feature[i].imageUrl %>"
+										alt="logo <%= feature[i].name %>"
+									/>
+								</td>
+
+								<td>
+									<form
+										action="/admin/feature/<%= feature[i].id %>/delete?_method=DELETE"
+										method="POST"
+									>
+										<!-- UPDATE BUTTON -->
+										<a
+											href="/admin/feature/<%= feature[i].id %>"
+											class="
+												btn
+												btn-warning
+												btn-circle
+												btn-sm
+											"
+										>
+											<i class="fas fa-edit"></i
+										></a>
+										<!-- DELETE BUTTON -->
+
+										<button
+											type="submit"
+											type="button"
+											class="
+												btn btn-danger btn-circle btn-sm
+											"
+										>
+											<i class="fas fa-trash"></i>
+										</button>
+									</form>
+								</td>
+							</tr>
+							<% } %>
+						</tbody>
 					</table>
 				</div>
 			</div>
