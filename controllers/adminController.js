@@ -556,6 +556,22 @@ module.exports = {
 				user: req.session.user,
 				booking,
 			});
+		} catch (error) {
+			res.redirect('/admin/booking');
+		}
+	},
+	showDetailBooking: async (req, res) => {
+		const { id } = req.params;
+		try {
+			const booking = await Booking.findOne({ _id: id })
+				.populate('memberId')
+				.populate('bankId');
+
+			res.render('admin/booking/show_detail_booking', {
+				title: 'Staycation | Booking',
+				user: req.session.user,
+				booking,
+			});
 		} catch (error) {}
 	},
 };

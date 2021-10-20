@@ -1,0 +1,66 @@
+<div class="card shadow mb-4 mt-2">
+	<div class="card-header py-3">
+		<a href="/admin/booking" class="btn btn-primary">Back</a>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<!-- KOLOM KIRI -->
+			<div class="col-md-4">
+				<img
+					src="http://localhost:3000/<%= booking.payments.proofPayment %>"
+					alt="image"
+					style="width: 100%; display: block"
+				/>
+				<form action="/admin/booking" method="POST" class="d-inline">
+					<button
+						type="submit"
+						class="btn btn-success btn-sm mt-4 d-inline"
+					>
+						<i class="fas fa-check"></i>
+						Confirm
+					</button>
+				</form>
+				<form action="/admin/booking" method="POST" class="d-inline">
+					<button
+						type="submit"
+						class="btn btn-danger btn-sm mt-4 d-inline"
+					>
+						<i class="fas fa-times"></i>
+						Reject
+					</button>
+				</form>
+			</div>
+			<!-- KOLOM KANAN -->
+			<div class="col-md-8">
+				<div class="table-responsive">
+					<table
+						class="table table-bordered"
+						id="dataTableActivity"
+						width="100%"
+						cellspacing="0"
+					>
+						<thead>
+							<tr>
+								<th>Nama Member</th>
+								<th>Total</th>
+								<th>Bank</th>
+								<th>Title</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<%= booking.memberId.firstName %> <%=
+									booking.memberId.lastName %>
+								</td>
+								<td>$ <%= booking.total %></td>
+								<td><%= booking.payments.bankFrom %></td>
+								<td><%= booking.itemId.title %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
