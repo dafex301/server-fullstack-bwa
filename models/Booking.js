@@ -18,7 +18,7 @@ const bookingSchema = new mongoose.Schema({
 	total: { type: Number, required: true },
 	memberId: { type: ObjectId, required: true, ref: 'Member' },
 	bankId: { type: ObjectId, required: true, ref: 'Bank' },
-	payment: {
+	payments: {
 		proofPayment: { type: String, required: true },
 		bankFrom: { type: String, required: true },
 		status: { type: String, required: true },
