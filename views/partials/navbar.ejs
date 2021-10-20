@@ -32,8 +32,8 @@
 				aria-expanded="false"
 			>
 				<span class="mr-2 d-none d-lg-inline text-gray-600 small"
-					>Admin</span
-				>
+					><%= user.username %>
+				</span>
 			</a>
 			<!-- Dropdown - User Information -->
 			<div
@@ -44,12 +44,7 @@
 				"
 				aria-labelledby="userDropdown"
 			>
-				<a
-					class="dropdown-item"
-					href="#"
-					data-toggle="modal"
-					data-target="#logoutModal"
-				>
+				<a class="dropdown-item" href="/admin/logout">
 					<i
 						class="
 							fas

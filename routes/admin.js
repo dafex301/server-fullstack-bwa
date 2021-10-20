@@ -6,6 +6,7 @@ const auth = require('../middlewares/auth');
 router.get('/login', adminController.viewLogin);
 router.post('/login', adminController.actionLogin);
 router.use(auth);
+router.get('/logout', adminController.actionLogout);
 
 router.get('/dashboard', adminController.viewDashboard);
 
