@@ -114,7 +114,6 @@ module.exports = {
 		const {
 			idItem,
 			duration,
-			price,
 			bookingDateStart,
 			bookingDateEnd,
 			firstName,
@@ -123,7 +122,6 @@ module.exports = {
 			phoneNumber,
 			accountHolder,
 			bankFrom,
-			proofPayment,
 		} = req.body;
 		if (!req.file) {
 			return res.status(404).json({ message: 'Image not found' });
