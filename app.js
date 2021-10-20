@@ -9,7 +9,9 @@ const flash = require('connect-flash');
 
 // import mongoose
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/db_staycation');
+mongoose.connect(
+	'mongodb+srv://dafex:nasigoreng@cluster0.tonpw.mongodb.net/db_staycation?retryWrites=true&w=majority'
+);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

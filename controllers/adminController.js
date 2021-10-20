@@ -572,9 +572,9 @@ module.exports = {
 			const alertMessage = req.flash('alertMessage');
 			const alertStatus = req.flash('alertStatus');
 			const alert = { message: alertMessage, status: alertStatus };
-			const booking = await Booking.findOne({ _id: id })
-				.populate('memberId')
-				.populate('bankId');
+			const booking = await Booking.findOne({ _id: id }).populate(
+				'memberId'
+			);
 
 			res.render('admin/booking/show_detail_booking', {
 				title: 'Staycation | Booking',
@@ -583,6 +583,7 @@ module.exports = {
 				alert,
 			});
 		} catch (error) {
+			console.log(error);
 			res.redirect('/admin/booking');
 		}
 	},
