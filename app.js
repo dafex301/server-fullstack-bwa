@@ -9,7 +9,7 @@ const flash = require('connect-flash');
 
 // import mongoose
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/server-bwamern');
+mongoose.connect('mongodb://localhost:27017/db_staycation');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

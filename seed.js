@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 // Connect to MongoDB via Mongoose
 seeder.connect(
-	'mongodb://127.0.0.1:27017/db_staycation',
+	'mongodb://127.0.0.1:27017/server-bwamern',
 	{
 		useNewUrlParser: true,
 		useCreateIndex: true,
@@ -24,6 +24,7 @@ seeder.connect(
 			'./models/Booking',
 			'./models/Users',
 		]);
+		console.log('TEESSSSS');
 
 		// Clear specified collections
 		seeder.clearModels(
