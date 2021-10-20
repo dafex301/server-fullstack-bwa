@@ -556,16 +556,14 @@ module.exports = {
 	// Booking
 	viewBooking: async (req, res) => {
 		try {
-			const booking = await Booking.find()
-				.populate('memberId')
-				.populate('bankId');
+			const booking = await Booking.find().populate('memberId');
 			res.render('admin/booking/view_booking', {
 				title: 'Staycation | Booking',
 				user: req.session.user,
 				booking,
 			});
 		} catch (error) {
-			res.redirect('/admin/booking');
+			res.redirect('admin/booking/view_booking');
 		}
 	},
 	showDetailBooking: async (req, res) => {
