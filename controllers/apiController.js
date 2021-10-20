@@ -17,6 +17,7 @@ module.exports = {
 					path: 'itemId',
 					perDocumentLimit: 4,
 					select: '_id title country city isPopular imageId',
+					option: { sort: { sumBooking: -1 } },
 					populate: {
 						path: 'imageId',
 						perDocumentLimit: 1,
@@ -26,6 +27,21 @@ module.exports = {
 			const traveler = await Traveler.find();
 			const treasure = await Treasure.find();
 			const city = await Item.find();
+
+			for (let i = 0; i < category.length; i++) {
+				for (let j = 0; j < category[i].itemId.length; j++) {
+					const item = await Item.findOne({
+						_id: category[i].itemId[j]._id,
+					});
+					item.isPopular = false;
+					await item.save();
+					if (category[i].itemId[0] === category[i].itemId[j]) {
+						item.isPopular = true;
+						await item.save();
+					}
+				}
+			}
+
 			res.status(200).json({
 				hero: {
 					travelers: traveler.length,
@@ -35,6 +51,11 @@ module.exports = {
 				mostPicked,
 				category,
 			});
-		} catch (error) {}
+		} catch (error) {
+			console.log(error);
+			res.status(500).json({
+				message: 'Internal server error',
+			});
+		}
 	},
 };
