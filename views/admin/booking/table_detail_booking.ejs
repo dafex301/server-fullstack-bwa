@@ -11,7 +11,12 @@
 					alt="image"
 					style="width: 100%; display: block"
 				/>
-				<form action="/admin/booking" method="POST" class="d-inline">
+				<% if (booking.payments.status == 'Proses') { %>
+				<form
+					action="/admin/booking/<%= booking.id %>/confirmation?_method=PUT"
+					method="POST"
+					class="d-inline"
+				>
 					<button
 						type="submit"
 						class="btn btn-success btn-sm mt-4 d-inline"
@@ -20,7 +25,11 @@
 						Confirm
 					</button>
 				</form>
-				<form action="/admin/booking" method="POST" class="d-inline">
+				<form
+					action="/admin/booking/<%= booking.id %>/reject?_method=PUT"
+					method="POST"
+					class="d-inline"
+				>
 					<button
 						type="submit"
 						class="btn btn-danger btn-sm mt-4 d-inline"
@@ -29,6 +38,7 @@
 						Reject
 					</button>
 				</form>
+				<% } %>
 			</div>
 			<!-- KOLOM KANAN -->
 			<div class="col-md-8">
