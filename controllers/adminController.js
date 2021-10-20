@@ -303,8 +303,14 @@ module.exports = {
 		try {
 			const { id } = req.params;
 			const item = await Item.findOne({ _id: id })
-				.populate({ path: 'imageId', select: 'id imageUrl' })
-				.populate({ path: 'categoryId', select: 'id name' });
+				.populate({
+					path: 'imageId',
+					select: 'id imageUrl',
+				})
+				.populate({
+					path: 'categoryId',
+					select: 'id name',
+				});
 			const category = await Category.find();
 			const alertMessage = req.flash('alertMessage');
 			const alertStatus = req.flash('alertStatus');
@@ -317,10 +323,6 @@ module.exports = {
 				action: 'edit',
 				user: req.session.user,
 			});
-			console.log('===================INI ITEM=====================');
-			console.log(item);
-			console.log('===================INI CATEGORY=====================');
-			console.log(category);
 		} catch (error) {
 			req.flash('alertMessage', `${error.message}`);
 			req.flash('alertStatus', 'danger');

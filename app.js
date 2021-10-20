@@ -6,15 +6,12 @@ var logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
-import cors from 'cors';
 
 // import mongoose
 var mongoose = require('mongoose');
 mongoose.connect(
 	'mongodb+srv://dafex:nasigoreng@cluster0.tonpw.mongodb.net/db_staycation?retryWrites=true&w=majority'
 );
-
-app.use(cors());
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
